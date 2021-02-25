@@ -13,3 +13,7 @@ To install with `freeipmi` support, use:
 ```bash
 brew install --with-freeipmi jchonig/repo/conman
 ```
+
+# TODO
+
++ [ ] Separate formula conman and conmandd?
