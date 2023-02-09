@@ -21,28 +21,9 @@ class Conman < Formula
     EOS
   end
 
-  plist_options startup: "false"
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-        <dict>
-          <key>Label</key>
-          <string>#{plist_name}</string>
-          <key>ProgramArguments</key>
-          <array>
-            <string>#{opt_sbin}/conmand</string>
-            <string>-F</string>
-            <string>-c</string>
-            <string>#{etc}/conman.conf</string>
-          </array>
-          <key>RunAtLoad</key>
-          <true/>
-        </dict>
-      </plist>
-    EOS
+  service do
+    run [opt_sbin/"conmand", "-F", "-c", etc/"conman.conf"]
+    keep_alive true
   end
 
   test do
