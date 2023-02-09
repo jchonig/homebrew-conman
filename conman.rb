@@ -1,12 +1,16 @@
 class Conman < Formula
   desc "ConMan: The Console Manager"
   homepage "https://github.com/dun/conman"
-  url "https://github.com/dun/conman/archive/conman-0.3.0.tar.gz"
-  sha256 "51d379187028317784305588ce3770e66d56c201c3d98afbf823eac039f4583c"
+  url "https://github.com/dun/conman/archive/conman-0.3.1.tar.gz"
+  sha256 "cd47d3d9a72579b470dd73d85cd3fec606fa5659c728ff3c1c57e970f4da72a2"
   license "GPL-3.0-only"
+
+  depends_on "automake" => :build
+  depends_on "autoconf" => :build
   depends_on "freeipmi" => :optional
 
   def install
+    system "./bootstrap"
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
